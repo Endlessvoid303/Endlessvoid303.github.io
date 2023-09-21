@@ -15,3 +15,23 @@
     background-repeat: no-repeat;
     background-size: contain;
 }
+.mailbutton{
+    background-image: url(outlook.jfif);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.itsbutton{
+    background-image: url(its.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.magisterbutton{
+    background-image: url(magister.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.onedrivebutton{
+    background-image: url(onedrive.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
