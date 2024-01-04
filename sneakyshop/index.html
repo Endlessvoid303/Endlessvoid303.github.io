@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.button{
+	wid
+}
+</style>
+</head>
+<body>
+<h1>JavaScript HTML Events</h1>
+<h2>The onclick Attribute</h2>
+<script>
+function add()
+{
+  var txtNumber = document.getElementById("txtNumber");
+  var newNumber = parseInt(txtNumber.value) + 1;
+  txtNumber.value = newNumber;
+}
+
+function subtract()
+{
+  var txtNumber = document.getElementById("txtNumber");
+  var newNumber = parseInt(txtNumber.value) - 1;
+  txtNumber.value = newNumber;
+  return false;
+}
+</script>
+<button class="button"onclick="javasctipt:add()">+</button>
+<input id="txtNumber" type=text" value="55" 
+  style="width:30px">
+<button onclick="javasctipt:subtract()">-</button>
+
+<p id="demo"></p>
+<form action="myphpfile.php">
+  <input type="submit" value="click on me!">
+</form>
+</body>
+</html>
