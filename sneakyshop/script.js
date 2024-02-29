@@ -2,7 +2,7 @@ const webhookUrl = 'https://discord.com/api/webhooks/1212764499157712927/HR5H26b
 const addButton = document.querySelector('.add-button');
 const removeButton = document.querySelector('.remove-button');
 const itemAmount = document.querySelector('.current-amount');
-const orderspace = document.querySelector('.order');
+const orderspace = document.getElementById('order');
 const form = document.querySelector('#shopform');
 var items = document.querySelectorAll('.item');
 let order = {};
@@ -58,5 +58,4 @@ for (var i = 0; i < items.length; i++) {
         orderspace.innerHTML = order
     });
   }
-
 
