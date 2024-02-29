@@ -2,74 +2,7 @@
 <html>
   <head>
     <title>Discord Webhook Example</title>
-    <style>
-      .success-bar {
-        background-color: green;
-        color: white;
-        padding: 5px;
-        text-align: center;
-        width: 100%;
-        margin-top: 10px;
-        display: none;
-      }
-    </style>
-    <script>
-      function sendMessage() {
-        const username = document.getElementById('username').value;
-        const messageText = document.getElementById('message').value;
-
-        if (!username || !messageText) {
-          // Show alert if username or message is not entered
-          alert('Please enter a username and a message.');
-          return;
-        }
-
-        const webhookUrl = 'https://discord.com/api/webhooks/WEBHOOK_ID/WEBHOOK_TOKEN';
-        const data = {
-          username: username,
-          content: messageText
-        };
-
-        // Disable message field
-        document.getElementById('message').disabled = true;
-
-        // Show success bar while sending message
-        const successBar = document.createElement('div');
-        successBar.classList.add('success-bar');
-        successBar.textContent = 'Message sent successfully!';
-        document.body.appendChild(successBar);
-        successBar.style.display = 'block';
-
-        fetch(webhookUrl, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(data)
-        })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Failed to send message');
-          }
-          // Enable message field after successful send
-          document.getElementById('message').disabled = false;
-          // Hide success bar after 10 seconds
-          setTimeout(() => {
-            successBar.style.display = 'none';
-          }, 10000);
-        })
-        .catch(error => {
-          console.error(error);
-          // Hide success bar and enable message field if an error occurs
-          const successBar = document.querySelector('.success-bar');
-          if (successBar) {
-            successBar.style.display = 'none';
-          }
-          document.getElementById('message').disabled = false;
-          alert('Failed to send message');
-        });
-      }
-    </script>
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <h1>Send a message to Discord</h1>
@@ -80,5 +13,12 @@
       <textarea id="message" name="message" rows="4" cols="50" disabled></textarea><br>
       <input type="submit" value="Send">
     </form>
+    <div class="item">
+      <button class="remove-button">-</button>
+      <img src="path/to/image.png" alt="Item image">
+      <button class="add-button">+</button>
+      <p class="price">$10.00</p>
+    </div>
+    <script src="script.js"></script>
   </body>
 </html>
