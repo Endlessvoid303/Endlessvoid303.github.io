@@ -5,7 +5,6 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <h1>Send a message to Discord</h1>
     <form id="messageForm" onsubmit="event.preventDefault(); sendMessage();">
       <label for="username">Username:</label><br>
       <input type="text" id="username" name="username" value=""><br>
@@ -14,10 +13,14 @@
       <input type="submit" value="Send">
     </form>
     <div class="item">
-      <button class="remove-button">-</button>
-      <img src="path/to/image.png" alt="Item image">
-      <button class="add-button">+</button>
-      <p class="price">$10.00</p>
+      <div class="item-content">
+        <button class="remove-button">-</button>
+        <img src="path/to/image.png" alt="Item image">
+        <div class="item-info">
+          <button class="add-button">+</button>
+          <p class="price">$10.00</p>
+        </div>
+      </div>
     </div>
     <script src="script.js"></script>
   </body>
