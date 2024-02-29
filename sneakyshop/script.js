@@ -32,7 +32,7 @@ document.getElementById('shopform').addEventListener('submit', async (event) => 
 // Initialize current amounts and prices arrays
 addButtons.forEach((button, index) => {
   currentAmounts.push(0);
-  prices.push(parseFloat(document.querySelectorAll('.price')[index].innerText.replace('$', '')));
+  prices.push(parseFloat(button.closest('.item').querySelector('.price').innerText.replace('$', '')));
 });
 
 // Add event listeners to buttons
