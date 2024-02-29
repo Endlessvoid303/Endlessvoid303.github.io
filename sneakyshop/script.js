@@ -3,6 +3,7 @@ const addButton = document.querySelector('.add-button');
 const removeButton = document.querySelector('.remove-button');
 const itemAmount = document.querySelector('.current-amount');
 const form = document.querySelector('#shopform');
+var items = document.querySelectorAll('.item');
 const order = [];
 function sendMessage() {
     const username = encodeURIComponent(document.getElementById('username').value);
@@ -28,16 +29,22 @@ function sendMessage() {
       // Show an error message, etc.
     });
 }
-addButton.addEventListener('click', () => {
-  let amount = parseInt(itemAmount.innerText);
-  amount++;
-  itemAmount.innerText = amount;
-});
-
-removeButton.addEventListener('click', () => {
-  let amount = parseInt(itemAmount.innerText);
-  if (amount > 0) {
-    amount--;
-    itemAmount.innerText = amount;
+for (var i = 0; i < items.length; i++) {
+    const addButton = document.querySelector('.add-button');
+    const removeButton = document.querySelector('.remove-button');
+    const itemAmount = document.querySelector('.current-amount');
+    addButton.addEventListener('click', () => {
+        let amount = parseInt(itemAmount.innerText);
+        amount++;
+        itemAmount.innerText = amount;
+      });
+    removeButton.addEventListener('click', () => {
+        let amount = parseInt(itemAmount.innerText);
+        if (amount > 0) {
+        amount--;
+        itemAmount.innerText = amount;
+        }
+    });
   }
-});
+
+
