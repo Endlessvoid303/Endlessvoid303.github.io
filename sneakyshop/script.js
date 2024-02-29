@@ -31,7 +31,6 @@ addButton.addEventListener('click', () => {
   let amount = parseInt(itemAmount.innerText);
   amount++;
   itemAmount.innerText = amount;
-  updateFormPrice(form, 10.00);
 });
 
 removeButton.addEventListener('click', () => {
@@ -39,12 +38,5 @@ removeButton.addEventListener('click', () => {
   if (amount > 0) {
     amount--;
     itemAmount.innerText = amount;
-    updateFormPrice(form, -10.00);
   }
 });
-
-function updateFormPrice(form, priceChange) {
-  let currentPrice = parseFloat(form.elements['total-prices'].value);
-  currentPrice += priceChange;
-  form.elements['total-prices'].value = currentPrice.toFixed(2);
-}
