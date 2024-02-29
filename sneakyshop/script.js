@@ -3,6 +3,7 @@ const addButton = document.querySelector('.add-button');
 const removeButton = document.querySelector('.remove-button');
 const itemAmount = document.querySelector('.current-amount');
 const form = document.querySelector('#shopform');
+const order = [];
 function sendMessage() {
     const username = encodeURIComponent(document.getElementById('username').value);
     const order = encodeURIComponent(document.getElementById('order').value);
@@ -31,6 +32,14 @@ addButton.addEventListener('click', () => {
   let amount = parseInt(itemAmount.innerText);
   amount++;
   itemAmount.innerText = amount;
+  // Check if the item is already in the order list
+  if (!order.includes(item)) {
+    // Add the item to the order list
+    order.push(item);
+
+    // Update the order element of the form
+    document.getElementById('order').value = order.join(', ');
+  }
 });
 
 removeButton.addEventListener('click', () => {
@@ -38,5 +47,14 @@ removeButton.addEventListener('click', () => {
   if (amount > 0) {
     amount--;
     itemAmount.innerText = amount;
+  }
+  if (amount === 0) {
+    const index = order.indexOf(item);
+    if (index > -1) {
+      order.splice(index, 1);
+    }
+
+    // Update the order element of the form
+    document.getElementById('order').value = order.join(', ');
   }
 });
