@@ -4,7 +4,7 @@ const removeButton = document.querySelector('.remove-button');
 const itemAmount = document.querySelector('.current-amount');
 const form = document.querySelector('#shopform');
 var items = document.querySelectorAll('.item');
-const order = [];
+let order = {};
 function sendMessage() {
     const username = encodeURIComponent(document.getElementById('username').value);
     const order = encodeURIComponent(document.getElementById('order').value);
@@ -38,12 +38,20 @@ for (var i = 0; i < items.length; i++) {
         let amount = parseInt(itemAmount.innerText);
         amount++;
         itemAmount.innerText = amount;
+        order[item] = amount
+        if (order[item] === 0) {
+            delete order[item]
+        }
       });
     removeButton.addEventListener('click', () => {
         let amount = parseInt(itemAmount.innerText);
         if (amount > 0) {
         amount--;
         itemAmount.innerText = amount;
+        order[item] = amount
+        }
+        if (order[item] === 0) {
+            delete order[item]
         }
     });
   }
