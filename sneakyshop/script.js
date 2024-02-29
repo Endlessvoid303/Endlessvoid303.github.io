@@ -29,3 +29,4 @@ function sendMessage() {
     },
     body: JSON.stringify(data)
   })
+}
