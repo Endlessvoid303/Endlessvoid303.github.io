@@ -1,4 +1,6 @@
 const webhookUrl = 'https://discord.com/api/webhooks/1212764499157712927/HR5H26bp09yscH6divAzSPIAI1dzkv6uItkvANdzQJKMBa6p_QcAfeZ7pqepGLtx7Mn-';
+const photoElement = document.getElementById('photo');
+const photoAlt = photoElement.getAttribute('alt');
 
 function sendMessage() {
   const username = document.getElementById('username').value;
@@ -12,7 +14,7 @@ function sendMessage() {
 
   const data = {
     username: username,
-    content: messageText
+    content: `Item: ${photoAlt}\nAmount: ${currentAmount}\nPrice per item: ${priceElement.textContent}\nTotal price: ${currentAmount * parseFloat(priceElement.textContent)}`
   };
 
   // Show success bar while sending message
