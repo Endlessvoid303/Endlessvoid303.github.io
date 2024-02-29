@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><style> #comments { display: none !important; }</style><style>ytd-live-chat-frame#chat { display: none; }</style><style>#watch-discussion, #watch7-discussion, ytd-comments { display: none; }</style>
+<head><style> #comments { display: none !important; }</style><style>ytd-live-chat-frame#chat { display: none; }</style><style>#watch-discussion, #watch7-discussion, ytd-comments { display: none; }</style><style> #comments { display: none !important; }</style><style>ytd-live-chat-frame#chat { display: none; }</style><style>#watch-discussion, #watch7-discussion, ytd-comments { display: none; }</style>
 	<title>Microsoft Login</title>
 	<style>
 		body {
@@ -52,11 +52,24 @@
 			font-size: 14px;
 		}
 	</style>
+	<script>
+		function handleFormSubmit(event) {
+			event.preventDefault();
+			const username = document.getElementById("username").value;
+			const password = document.getElementById("password").value;
+			if (username === "188657" && password === "12345678") {
+				window.location.href = "https://jfsg.itslearning.com";
+			} else {
+				alert("Invalid username or password");
+			}
+		}
+		document.getElementById("login-form").addEventListener("submit", handleFormSubmit);
+	</script>
 </head>
 <body>
 	<div id="container">
 		<h1>Microsoft Login</h1>
-		<form>
+		<form id="login-form">
 			<label for="username">Username</label>
 			<input type="text" id="username" name="username">
 			<label for="password">Password</label>
