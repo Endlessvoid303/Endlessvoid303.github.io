@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.dropdown-content{
+    display: none;
+    border: 2px solid black;
+    background-color: gray;
+    margin-top: 2px;
+}
+.dropdown-content a {
+  color: black;
+  border: 1px solid black;
+  margin: 3px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown{
+    position: relative;
+    display: inline-block;
+}
+.content {
+    display: none;
+    border: 3px solid black;
+    margin-top: 15px;
+}
+.effectlist div {
+    padding-left: 20px;
+    background-repeat: no-repeat;
+}
+.speed {
+    background-image: url(speed.png);
+    padding-left: 20px;
+    background-repeat: no-repeat;
+}
+.slowness {
+    background-image: url(slowness.png);
+    padding-left: 20px;
+    background-repeat: no-repeat;
+}
+.jumpboost {
+    background-image: url(jump_boost.png);
+    padding-left: 20px;
+    background-repeat: no-repeat;
+}
+.strength {
+    background-image: url(strength.png);
+    padding-left: 20px;
+    background-repeat: no-repeat;
+}
+.healing {
+    background-image: url(instant_health.png);
+    padding-left: 20px;
+    background-repeat: no-repeat;
+}
+.harming {
+    background-image: url(instant_damage.png);
+    padding-left: 20px;
+    background-repeat: no-repeat;
+}
+.poison {
+    background-image: url(poison.png);
+    padding-left: 20px;
+    background-repeat: no-repeat;
+}
+.regeneration {
+    background-image: url(regeneration.png);
+    padding-left: 20px;
+    background-repeat: no-repeat;
+}
+.fireresistance {
+    background-image: url(fire_resistance.png);
+    padding-left: 20px;
+    background-repeat: no-repeat;
+}
+.waterbreathing {
+    background-image: url(water_breathing.png);
+    padding-left: 20px;
+    background-repeat: no-repeat;
+}
+.nightvision {
+    background-image: url(night_vision.png);
+    padding-left: 20px;
+    background-repeat: no-repeat;
+}
+.invisibility {
+    background-image: url(invisibility.png);
+    padding-left: 20px;
+    background-repeat: no-repeat;
+}
+.turtlemaster {
+    background-image: url(resistance.png);
+    padding-left: 20px;
+    background-repeat: no-repeat;
+}
+.slowfalling {
+    background-image: url(slow_falling.png);
+    padding-left: 20px;
+    background-repeat: no-repeat;
+}
+.weakness {
+    background-image: url(weakness.png);
+    padding-left: 20px;
+    background-repeat: no-repeat;
+}
+.show {
+    display: block;
+}
+</style>
+</head>
+<body>
+<script>
+    function hideall(){
+        document.getElementById("orey").classList.remove("show");
+        document.getElementById("brew").classList.remove("show");
+        document.getElementById("trades").classList.remove("show");
+    }
+    function getylevels(){
+        hideall()
+        document.getElementById("orey").classList.add("show");
+    }
+    function getbrew(){
+        hideall()
+        document.getElementById("brew").classList.add("show");
+    }
+    function gettrades(){
+        hideall()
+        document.getElementById("trades").classList.add("show");
+    }
+    function dropdown1() {
+        document.getElementById("thedropdown").classList.toggle("show");
+    }
+    function dropdown2() {
+        document.getElementById("effectslist").classList.toggle("show");
+    }
+    function showrecipe(potion){
+
+    }
+</script>
+<div style="display: flex; flex-direction: row;">
+<div style="width: 150px; height:98vh; background-color: brown;">
+<div class="dropdown">
+    <button onclick="dropdown1()" class="dropbtn">Choose what u need</button>
+    <div id="thedropdown" class="dropdown-content">
+        <a onclick="getylevels()">ore y levels</a>
+        <a onclick="gettrades()">villager trades</a>
+        <a onclick="getbrew()">brewing guide</a>
+    </div>
+<div class="content" id="orey">
+    <a>y level of ores</a>
+</div>
+<div class="content" id="brew">
+    <div class="dropdown">
+        <button onclick="dropdown2()" class="dropbtn">choose potion</button>
+        <div id="effectslist" class="effectslist dropdown-content">
+            <a class="speed">speed</a>
+            <a class="slowness">slowness</a>
+            <a class="jumpboost">jumpboost</a>
+            <a class="strength">strength</a>
+            <a class="healing">healing</a>
+            <a class="harming">harming</a>
+            <a class="poison">poison</a>
+            <a class="regeneration">regeneration</a>
+            <a class="fireresistance">fireresistance</a>
+            <a class="waterbreathing">waterbreathing</a>
+            <a class="nightvision">nightvision</a>
+            <a class="invisibility">invisibility</a>
+            <a class="turtlemaster">turtlemaster</a>
+            <a class="slowfalling">slowfalling</a>
+            <a class="weakness">weakness</a>
+        </div>
+    </div>
+</div>
+<div class="content" id="trades">
+    <a>trades</a>
+</div>
+</div>
+<div>hi</div>
+</div>
+</body>
+</html>

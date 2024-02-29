@@ -1,78 +1,47 @@
 <!DOCTYPE html>
 <html>
-<head>
-<style>
-.button{
-	wid
-}
-</style>
-</head>
-<body>
-<h1>JavaScript HTML Events</h1>
-<h2>The onclick Attribute</h2>
-<script>
-function add()
-{
-  var txtNumber = document.getElementById("txtNumber");
-  var newNumber = parseInt(txtNumber.value) + 1;
-  txtNumber.value = newNumber;
-}
+  <head>
+    <title>Discord Webhook Example</title>
+    <script>
+      function sendMessage() {
+        const messageText = document.getElementById('message').value;
 
-function subtract()
-{
-  var txtNumber = document.getElementById("txtNumber");
-  var newNumber = parseInt(txtNumber.value) - 1;
-  txtNumber.value = newNumber;
-  return false;
-}
-</script>
-<button class="button"onclick="javasctipt:add()">+</button>
-<?php
+        if (!messageText) {
+          alert('Please enter a message.');
+          return;
+        }
 
-  $webhook_url = 'https://discord.com/api/webhooks/xxxxxx/xxxxxx';
+        const webhookUrl = 'https://discord.com/api/webhooks/1212764499157712927/HR5H26bp09yscH6divAzSPIAI1dzkv6uItkvANdzQJKMBa6p_QcAfeZ7pqepGLtx7Mn-';
+        const data = {
+          content: messageText
+        };
 
-  $msg = ["content" => "Hi, this is the message sent from php"];
-
-  $headers = array('Content-Type: application/json'); 
-
-  $ch = curl_init();
-  curl_setopt( $ch,CURLOPT_URL, $webhook_url );
-  curl_setopt( $ch,CURLOPT_POST, true );
-  curl_setopt( $ch,CURLOPT_HTTPHEADER, $headers );
-  curl_setopt( $ch,CURLOPT_RETURNTRANSFER, true );
-  curl_setopt( $ch,CURLOPT_SSL_VERIFYPEER, false );
-  curl_setopt( $ch,CURLOPT_POSTFIELDS, json_encode( $msg ) );
-  $response = curl_exec( $ch );
-  curl_close( $ch );
-
-  echo $response;
-?><?php
-
-  $webhook_url = 'https://discord.com/api/webhooks/1192365086791184394/U3lsF_KumvwjhMHHk8YS-CC_zqBCeo2yqcuJFF0Urs61w-RQPUAa-ZGZb1K6NshN4waJ';
-
-  $msg = ["content" => "Hi, this is the message sent from php"];
-
-  $headers = array('Content-Type: application/json'); 
-
-  $ch = curl_init();
-  curl_setopt( $ch,CURLOPT_URL, $webhook_url );
-  curl_setopt( $ch,CURLOPT_POST, true );
-  curl_setopt( $ch,CURLOPT_HTTPHEADER, $headers );
-  curl_setopt( $ch,CURLOPT_RETURNTRANSFER, true );
-  curl_setopt( $ch,CURLOPT_SSL_VERIFYPEER, false );
-  curl_setopt( $ch,CURLOPT_POSTFIELDS, json_encode( $msg ) );
-  $response = curl_exec( $ch );
-  curl_close( $ch );
-
-  echo $response;
-?>
-<input id="txtNumber" type=text" value="55" 
-  style="width:30px">
-<button onclick="javasctipt:subtract()">-</button>
-
-<p id="demo"></p>
-<form action="index.php">
-  <input type="submit" value="click on me!">
-</form>
-</body>
+        fetch(webhookUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Failed to send message');
+          }
+          alert('Message sent successfully');
+        })
+        .catch(error => {
+          console.error(error);
+          alert('Failed to send message');
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Send a message to Discord</h1>
+    <form id="messageForm" onsubmit="event.preventDefault(); sendMessage();">
+      <label for="message">Message:</label><br>
+      <textarea id="message" name="message" rows="4" cols="50"></textarea><br>
+      <input type="submit" value="Send">
+    </form>
+  </body>
 </html>
