@@ -62,7 +62,7 @@ function updateCart(index) {
       return;
     }
     cartItem.querySelector('.current-amount').innerText = currentAmounts[index];
-  }
+}
 
 // Update total price display
 function updateTotalPrice() {
