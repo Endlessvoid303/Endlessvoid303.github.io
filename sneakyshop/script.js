@@ -31,32 +31,13 @@ function sendMessage() {
 addButton.addEventListener('click', () => {
   let amount = parseInt(itemAmount.innerText);
   amount++;
-  const item = document.getElementById('item-image').alt;
   itemAmount.innerText = amount;
-  // Check if the item is already in the order list
-  if (!order.includes(item)) {
-    // Add the item to the order list
-    order.push(item);
-
-    // Update the order element of the form
-    document.getElementById('order').innerHTML = order;
-  }
 });
 
 removeButton.addEventListener('click', () => {
   let amount = parseInt(itemAmount.innerText);
-  const item = document.getElementById('item-image').alt;
   if (amount > 0) {
     amount--;
     itemAmount.innerText = amount;
-  }
-  if (amount === 0) {
-    const index = order.indexOf(item);
-    if (index > -1) {
-      order.splice(index, 1);
-    }
-
-    // Update the order element of the form
-    document.getElementById('order').innerHTML = order;
   }
 });
