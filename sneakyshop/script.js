@@ -30,9 +30,10 @@ function sendMessage() {
     });
 }
 for (var i = 0; i < items.length; i++) {
-    const addButton = document.querySelector('.add-button');
-    const removeButton = document.querySelector('.remove-button');
-    const itemAmount = document.querySelector('.current-amount');
+    const item = items[i]
+    const addButton = item.querySelector('.add-button');
+    const removeButton = item.querySelector('.remove-button');
+    const itemAmount = item.querySelector('.current-amount');
     addButton.addEventListener('click', () => {
         let amount = parseInt(itemAmount.innerText);
         amount++;
