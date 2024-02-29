@@ -3,7 +3,7 @@ document.getElementById('shopform').addEventListener('submit', async (event) => 
     event.preventDefault(); // Prevent the form from submitting normally
 
     const username = document.getElementById('username').value;
-
+    const order = document.getElementById('order').value;
     // Send the username to Discord using the webhook URL
     const response = await fetch(webhookUrl, {
         method: 'POST',
@@ -11,7 +11,7 @@ document.getElementById('shopform').addEventListener('submit', async (event) => 
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            content: `Username: ${username}`
+            content: `Username: ${username} Ordered: ${order}`
         })
     });
 
