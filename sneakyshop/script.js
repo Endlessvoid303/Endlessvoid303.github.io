@@ -56,13 +56,16 @@ removeButtons.forEach((button, index) => {
 
 // Update cart display
 function updateCart(index) {
+    console.log('Updating cart for index', index);
+    console.log('Cart element:', cart);
     const cartItem = cart.querySelector(`.item-content:nth-child(${index + 1})`);
     if (cartItem === null) {
       console.error(`Cannot find item-content element ${index + 1}`);
       return;
     }
+    console.log('Cart item:', cartItem);
     cartItem.querySelector('.current-amount').innerText = currentAmounts[index];
-}
+  }
 
 // Update total price display
 function updateTotalPrice() {
