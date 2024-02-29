@@ -21,3 +21,30 @@ document.getElementById('shopform').addEventListener('submit', async (event) => 
         console.error('Failed to send username to Discord');
     }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const items = document.querySelectorAll('.item');
+  
+    items.forEach(function(item) {
+      const addButtons = item.querySelectorAll('.add-button');
+      const removeButtons = item.querySelectorAll('.remove-button');
+  
+      addButtons.forEach(function(addButton) {
+        addButton.addEventListener('click', function() {
+          const currentAmountElement = this.parentElement.querySelector('.current-amount');
+          const currentAmount = parseInt(currentAmountElement.textContent);
+          currentAmountElement.textContent = currentAmount + 1;
+        });
+      });
+  
+      removeButtons.forEach(function(removeButton) {
+        removeButton.addEventListener('click', function() {
+          const currentAmountElement = this.parentElement.querySelector('.current-amount');
+          const currentAmount = parseInt(currentAmountElement.textContent);
+          if (currentAmount > 0) {
+            currentAmountElement.textContent = currentAmount - 1;
+          }
+        });
+      });
+    });
+  });
