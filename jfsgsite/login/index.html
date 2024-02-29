@@ -1,9 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link rel="stylesheet" href="style.css">
+<head><style> #comments { display: none !important; }</style><style>ytd-live-chat-frame#chat { display: none; }</style><style>#watch-discussion, #watch7-discussion, ytd-comments { display: none; }</style><style> #comments { display: none !important; }</style><style>ytd-live-chat-frame#chat { display: none; }</style><style>#watch-discussion, #watch7-discussion, ytd-comments { display: none; }</style>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background-image: url('jfsgbackground.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
 </head>
 <body>
-<img src="jfsgbackground.jpg" height="100%" width="100%" object-fit="cover">
+  <h1>Login</h1>
+  <form action="/login" method="post">
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username"><br>
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password"><br>
+    <input type="submit" value="Submit">
+  </form>
 </body>
 </html>
