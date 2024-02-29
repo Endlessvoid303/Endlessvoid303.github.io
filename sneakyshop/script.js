@@ -33,7 +33,6 @@ function sendMessage() {
 const addButton = document.querySelector('.add-button');
 const removeButton = document.querySelector('.remove-button');
 const currentAmountElement = document.querySelector('.current-amount');
-const priceElement = document.querySelector('.price');
 
 let currentAmount = parseInt(currentAmountElement.textContent);
 
