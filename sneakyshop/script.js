@@ -1,4 +1,11 @@
 const webhookUrl = 'https://discord.com/api/webhooks/1212764499157712927/HR5H26bp09yscH6divAzSPIAI1dzkv6uItkvANdzQJKMBa6p_QcAfeZ7pqepGLtx7Mn-';
+const addButtons = document.querySelectorAll('.add-button');
+const removeButtons = document.querySelectorAll('.remove-button');
+const cart = document.querySelector('.cart');
+const totalPrice = document.getElementById('total-price');
+
+let currentAmounts = [];
+let prices = [];
 document.getElementById('shopform').addEventListener('submit', async (event) => {
     event.preventDefault(); // Prevent the form from submitting normally
 
@@ -22,52 +29,42 @@ document.getElementById('shopform').addEventListener('submit', async (event) => 
     }
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    const items = document.querySelectorAll('.item');
-    const orderForm = document.getElementById('shopform');
-    const orderInput = document.getElementById('order');
-    let order = {};
-    items.forEach(function(item) {
-      const addButtons = item.querySelectorAll('.add-button');
-      const removeButtons = item.querySelectorAll('.remove-button');
-      const itemName = item.querySelector('.item-image').alt;
+// Initialize current amounts and prices arrays
+addButtons.forEach((button, index) => {
+  currentAmounts.push(0);
+  prices.push(parseFloat(document.querySelectorAll('.price')[index].innerText.replace('$', '')));
+});
 
-      addButtons.forEach(function(addButton) {
-        addButton.addEventListener('click', function() {
-          const currentAmountElement = this.parentElement.querySelector('.current-amount');
-          const currentAmount = parseInt(currentAmountElement.textContent);
-          currentAmountElement.textContent = currentAmount + 1;
-          // Update the order object
-          if (order.hasOwnProperty(itemName)) {
-            order[itemName]++;
-        } else {
-            order[itemName] = 1;
-        }
-
-        // Update the order input field
-        orderInput.value = JSON.stringify(order);
-        });
-      });
-  
-      removeButtons.forEach(function(removeButton) {
-        removeButton.addEventListener('click', function() {
-          const currentAmountElement = this.parentElement.querySelector('.current-amount');
-          const currentAmount = parseInt(currentAmountElement.textContent);
-          if (currentAmount > 0) {
-            currentAmountElement.textContent = currentAmount - 1;
-            if (order.hasOwnProperty(itemName)) {
-                order[itemName]--;
-            }
-
-            // If the quantity is 0, remove the item from the order object
-            if (order[itemName] === 0) {
-                delete order[itemName];
-            }
-
-            // Update the order input field
-            orderInput.value = JSON.stringify(order);
-          }
-        });
-      });
-    });
+// Add event listeners to buttons
+addButtons.forEach((button, index) => {
+  button.addEventListener('click', () => {
+    currentAmounts[index]++;
+    updateCart(index);
+    updateTotalPrice();
   });
+});
+
+removeButtons.forEach((button, index) => {
+  button.addEventListener('click', () => {
+    if (currentAmounts[index] > 0) {
+      currentAmounts[index]--;
+      updateCart(index);
+      updateTotalPrice();
+    }
+  });
+});
+
+// Update cart display
+function updateCart(index) {
+  const cartItem = cart.querySelector(`.item-content:nth-child(${index + 1})`);
+  cartItem.querySelector('.current-amount').innerText = currentAmounts[index];
+}
+
+// Update total price display
+function updateTotalPrice() {
+  let total = 0;
+  currentAmounts.forEach((amount, index) => {
+    total += amount * prices[index];
+  });
+  totalPrice.innerText = `$${total.toFixed(2)}`;
+}
