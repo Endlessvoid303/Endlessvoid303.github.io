@@ -9,85 +9,52 @@ const priceElement = document.querySelector('.price');
 
 const cart = [];
 
-addButton.addEventListener('click', () => {
-  const item = {
-    name: photoAlt,
-    price: parseFloat(priceElement.textContent),
-    quantity: 1
-  };
-
-  const index = cart.findIndex(i => i.name === item.name);
-  if (index === -1) {
-    cart.push(item);
-  } else {
-    cart[index].quantity++;
+function updateCurrentAmount() {
+    const cart = document.querySelector('.cart');
+    const currentAmount = document.querySelector('.current-amount');
+    const cartItems = cart.querySelectorAll('.item-content');
+    let totalAmount = 0;
+    cartItems.forEach(item => {
+      const amount = parseInt(item.querySelector('.current-amount').textContent);
+      totalAmount += amount;
+    });
+    currentAmount.innerHTML = totalAmount;
   }
-
-  updateCart();
-});
-
-removeButton.addEventListener('click', () => {
-  const item = {
-    name: photoAlt,
-    price: parseFloat(priceElement.textContent)
-  };
-
-  const index = cart.findIndex(i => i.name === item.name);
-  if (index !== -1 && cart[index].quantity > 0) {
-    cart[index].quantity--;
-  }
-
-  updateCart();
-});
-
-function updateCart() {
-  let totalPrice = 0;
-  let cartHtml = '';
-
-  cart.forEach(item => {
-    const itemPrice = item.price * item.quantity;
-    totalPrice += itemPrice;
-
-    cartHtml += `<p>${item.name}: ${item.quantity} x $${item.price.toFixed(2)} = $${itemPrice.toFixed(2)}</p>`;
+  
+  document.querySelectorAll('.add-button').forEach(button => {
+    button.addEventListener('click', event => {
+      const itemContent = event.target.parentElement;
+      const currentAmount = itemContent.querySelector('.current-amount');
+      currentAmount.textContent = parseInt(currentAmount.textContent) + 1;
+      updateCurrentAmount();
+    });
   });
-
-  currentAmountElement.innerHTML = cart.length;
-  priceElement.innerHTML = `$${totalPrice.toFixed(2)}`;
-  document.querySelector('.cart').innerHTML = cartHtml;
-}
-
-function sendMessage() {
-  const username = document.getElementById('username').value;
-
-  if (!username) {
-    // Show alert if username or message is not entered
-    alert('Please enter a username and a message.');
-    return;
-  }
-
-  let content = '';
-  cart.forEach(item => {
-    const itemPrice = item.price * item.quantity;
-    content += `Item: ${item.name}\nAmount: ${item.quantity}\nPrice per item: $${item.price.toFixed(2)}\nTotal price: $${itemPrice.toFixed(2)}\n\n`;
+  
+  document.querySelectorAll('.remove-button').forEach(button => {
+    button.addEventListener('click', event => {
+      const itemContent = event.target.parentElement;
+      const currentAmount = itemContent.querySelector('.current-amount');
+      if (parseInt(currentAmount.textContent) > 0) {
+        currentAmount.textContent = parseInt(currentAmount.textContent) - 1;
+      }
+      updateCurrentAmount();
+    });
   });
-
-  const data = {
-    username: username,
-    content: content
-  };
-
-  // Show success bar while sending message
-  const successBar = document.createElement('div');
-  successBar.classList.add('success-bar');
-  successBar.textContent = 'Message sent successfully!';
-  document.body.appendChild(successBar);
-  successBar.style.display = 'block';
-
-  fetch(webhookUrl, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  })
-}
+  
+  function sendMessage() {
+    const username = document.getElementById('username').value;
+    const cart = document.querySelector('.cart');
+    const message = {
+      username: username,
+      content: cart.innerHTML,
+    };
+  
+    // Send the message to the server
+    fetch('https://your-webhook-url', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(message),
+    });
+  }
