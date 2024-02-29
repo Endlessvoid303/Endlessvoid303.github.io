@@ -40,18 +40,11 @@ let currentAmount = parseInt(currentAmountElement.textContent);
 addButton.addEventListener('click', () => {
   currentAmount++;
   currentAmountElement.textContent = currentAmount;
-  updatePrice();
 });
 
 removeButton.addEventListener('click', () => {
   if (currentAmount > 0) {
     currentAmount--;
     currentAmountElement.textContent = currentAmount;
-    updatePrice();
   }
 });
-
-function updatePrice() {
-  const price = parseFloat(priceElement.textContent.slice(1));
-  priceElement.textContent = '$' + (currentAmount * price).toFixed(2);
-}
