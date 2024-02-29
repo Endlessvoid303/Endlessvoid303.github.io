@@ -38,7 +38,7 @@ addButton.addEventListener('click', () => {
     order.push(item);
 
     // Update the order element of the form
-    document.getElementById('order').value = order.join(', ');
+    document.getElementById('order').innerHTML = order;
   }
 });
 
@@ -55,6 +55,6 @@ removeButton.addEventListener('click', () => {
     }
 
     // Update the order element of the form
-    document.getElementById('order').value = order.join(', ');
+    document.getElementById('order').innerHTML = order;
   }
 });
