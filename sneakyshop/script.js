@@ -1,4 +1,11 @@
 const webhookUrl = 'https://discord.com/api/webhooks/1212764499157712927/HR5H26bp09yscH6divAzSPIAI1dzkv6uItkvANdzQJKMBa6p_QcAfeZ7pqepGLtx7Mn-';
+const addButtons = document.querySelectorAll('.add-button');
+const removeButtons = document.querySelectorAll('.remove-button');
+const cart = document.querySelector('.cart');
+const totalPrice = document.getElementById('total-price');
+
+let currentAmounts = [];
+let prices = [];
 document.getElementById('shopform').addEventListener('submit', async (event) => {
     event.preventDefault(); // Prevent the form from submitting normally
 
