@@ -43,7 +43,7 @@ for (var i = 0; i < items.length; i++) {
         if (order[item] === 0) {
             delete order[item]
         }
-        orderspace.innerHTML = order
+        orderspace.innerHTML = JSON.stringify(order)
       });
     removeButton.addEventListener('click', () => {
         let amount = parseInt(itemAmount.innerText);
@@ -55,7 +55,7 @@ for (var i = 0; i < items.length; i++) {
         if (order[item] === 0) {
             delete order[item]
         }
-        orderspace.innerHTML = order
+        orderspace.innerHTML = JSON.stringify(order)
     });
   }
 
