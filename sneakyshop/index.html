@@ -5,16 +5,6 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <form id="shopformor" onsubmit="event.preventDefault(); sendMessage();">
-      <label for="username">Username:</label><br>
-      <input type="text" id="username" name="username" value=""><br>
-      <label for="order">Order:</label><br>
-      <textarea id="order" name="order" readonly></textarea><br>
-      <label for="total-price">Price:</label><br>
-      <textarea id="total-price" name="total-prices" readonly></textarea><br>
-      <div class="cart"></div>
-      <input type="submit" value="Send">
-    </form>
     <div class="item">
       <button class="remove-button">-</button>
       <div class="item-info">
@@ -45,6 +35,16 @@
       </div>
       <button class="add-button">+</button>
     </div>
+    <form id="shopformor" onsubmit="event.preventDefault(); sendMessage();">
+      <label for="username">Username:</label><br>
+      <input type="text" id="username" name="username" value=""><br>
+      <label for="order">Order:</label><br>
+      <textarea id="order" name="order" readonly></textarea><br>
+      <label for="total-price">Price:</label><br>
+      <textarea id="total-price" name="total-prices" readonly></textarea><br>
+      <div class="cart"></div>
+      <input type="submit" value="Send">
+    </form>
     <script src="script.js"></script>
   </body>
 </html>

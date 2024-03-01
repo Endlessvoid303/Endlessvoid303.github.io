@@ -61,4 +61,3 @@ for (var i = 0; i < items.length; i++) {
         orderspace.innerHTML = JSON.stringify(order)
     });
   }
-
