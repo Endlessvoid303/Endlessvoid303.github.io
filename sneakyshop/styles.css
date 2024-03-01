@@ -70,6 +70,7 @@
   
   .remove-button, .add-button {
     width: 25px;
+    height: 125px;
   }
   .current-amount {
     font-size: 24px;
