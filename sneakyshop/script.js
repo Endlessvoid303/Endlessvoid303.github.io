@@ -31,7 +31,7 @@ function sendMessage() {
     });
 }
 for (var i = 0; i < items.length; i++) {
-    const item = items[i]
+    const item = items[i].getAttribute('alt')
     const addButton = item.querySelector('.add-button');
     const removeButton = item.querySelector('.remove-button');
     const itemAmount = item.querySelector('.current-amount');
