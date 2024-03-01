@@ -7,9 +7,9 @@ const form = document.querySelector('#shopform');
 var items = document.querySelectorAll('.item');
 let order = {};
 function sendMessage() {
-    const username = encodeURIComponent(document.getElementById('username').value);
+    const username = document.getElementById('username').value;
     const order = document.getElementById('order').value;
-    const totalPrice = encodeURIComponent(document.getElementById('total-price').value);
+    const totalPrice = document.getElementById('total-price').value;
     const webhookUrl = 'https://discord.com/api/webhooks/1212764499157712927/HR5H26bp09yscH6divAzSPIAI1dzkv6uItkvANdzQJKMBa6p_QcAfeZ7pqepGLtx7Mn-';
 
     const message = `**Username:** ${username}\n**Order:** ${order}\n**Total Price:** ${totalPrice}`;
