@@ -31,7 +31,8 @@ function sendMessage() {
     });
 }
 for (var i = 0; i < items.length; i++) {
-    const item = items[i].getAttribute('alt')
+    const item = items[i]
+    const itemname = item.getAttribute('alt')
     const addButton = item.querySelector('.add-button');
     const removeButton = item.querySelector('.remove-button');
     const itemAmount = item.querySelector('.current-amount');
@@ -39,9 +40,9 @@ for (var i = 0; i < items.length; i++) {
         let amount = parseInt(itemAmount.innerText);
         amount++;
         itemAmount.innerText = amount;
-        order[item] = amount
-        if (order[item] === 0) {
-            delete order[item]
+        order[itemname] = amount
+        if (order[itemname] === 0) {
+            delete order[itemname]
         }
         orderspace.innerHTML = JSON.stringify(order)
       });
@@ -50,10 +51,10 @@ for (var i = 0; i < items.length; i++) {
         if (amount > 0) {
         amount--;
         itemAmount.innerText = amount;
-        order[item] = amount
+        order[itemname] = amount
         }
-        if (order[item] === 0) {
-            delete order[item]
+        if (order[itemname] === 0) {
+            delete order[itemname]
         }
         orderspace.innerHTML = JSON.stringify(order)
     });
