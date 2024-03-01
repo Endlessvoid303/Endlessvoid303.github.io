@@ -33,7 +33,8 @@ function sendMessage() {
 for (var i = 0; i < items.length; i++) {
     const item = items[i]
     const itemimage = item.querySelector('.item-image');
-    const itemname = itemimage.getAttribute('id');
+    const itemnameobject = item.querySelector('.name');
+    const itemname = itemnameobject.innerText;
     const addButton = item.querySelector('.add-button');
     const removeButton = item.querySelector('.remove-button');
     const itemAmount = item.querySelector('.current-amount');
