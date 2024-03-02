@@ -12,7 +12,7 @@ function sendMessage() {
     const totalPrice = document.getElementById('total-price').value;
     const webhookUrl = 'https://discord.com/api/webhooks/1212764499157712927/HR5H26bp09yscH6divAzSPIAI1dzkv6uItkvANdzQJKMBa6p_QcAfeZ7pqepGLtx7Mn-';
 
-    const message = `**Order:** ${order}\n**Total Price:** ${totalPrice}`;
+    const message = `has orderd :\n**Order:** ${order}\n**Total Price:** ${totalPrice}`;
 
     fetch(webhookUrl, {
       method: 'POST',
