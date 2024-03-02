@@ -12,14 +12,17 @@ function sendMessage() {
     const totalPrice = document.getElementById('total-price').value;
     const webhookUrl = 'https://discord.com/api/webhooks/1212764499157712927/HR5H26bp09yscH6divAzSPIAI1dzkv6uItkvANdzQJKMBa6p_QcAfeZ7pqepGLtx7Mn-';
 
-    const message = `**Username:** ${username}\n**Order:** ${order}\n**Total Price:** ${totalPrice}`;
+    const message = `**Order:** ${order}\n**Total Price:** ${totalPrice}`;
 
     fetch(webhookUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ content: message })
+      body: JSON.stringify({ 
+        content: message,
+        username: username
+      })
     })
     .then(response => {
       console.log('Message sent to Discord:', message);
